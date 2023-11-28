@@ -1,7 +1,19 @@
-import http from "node:http";
+import http from 'node:http'
 
 const server = http.createServer((req, res) => {
-  return res.end("Primeiro Projeto NodeJS!");
-});
+  const { method, url } = req
 
-server.listen(3333);
+  if (method === 'GET' && url === '/users') {
+    return res.end('Listagem de usuários')
+  }
+
+  if (method === 'POST' && url === '/users') {
+    return res.end('Criação de usuários')
+  }
+
+  res.end('eroooooou!')
+})
+
+server.listen(3333, () => {
+  console.log('Server is running on port 3333')
+})
