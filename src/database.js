@@ -11,6 +11,7 @@ export class Database {
 
   select(table) {
     const data = this.#database[table] ?? []
+    this.#persist()
 
     return data
   }
